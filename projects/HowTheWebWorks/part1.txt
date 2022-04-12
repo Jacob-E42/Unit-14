@@ -1,0 +1,26 @@
+In your own terms, define the following terms:
+
+What is HTTP?
+What is a URL?
+What is DNS?
+What is a query string?
+What are two HTTP verbs and how are they different?
+What is an HTTP request?
+What is an HTTP response?
+What is an HTTP header? Give a couple examples of request and response headers you have seen.
+What are the processes that happen when you type “http://somesite.com/some/page.html” into a browser?
+
+1. HTTP is a hypertext transfer protocol, it's a system of rules which standardizes how information is communicated across a network which uses the protocol.
+2. Uniform Resource Locator, it's an identifying string for a certain webpage that your browser makes to request a webpage or certain resources and that the 
+web server uses to serve those resources. 
+3. Domain Name Service. A service that can take a given hostname of a site and look up the corresponding IP address in order for the browser to 
+request resources from the correct site.
+4. It's a string that can be attached to the end of a hostname query that the browser puts in, in order to specify certain parameters about what it's requesting
+5. GET, is a type of request that the browser makes, but it doesn't change any information on the server side. POST is another request type but it does change info 
+server side. 
+6. It's the communication that a browser sends to a wev server, asking it to send back certain resources.
+7. It's the communication the web server send back, which contains a response code as to the status of the request, and hopefully also with response body.
+8. It's a section of a response or request which contains metadata about the communication. 
+9. First the browser will try to locate the Ip address that corresponds to "somesite.com". This will be done by checking the local cache, the router, the 
+ISP, and then a DNS server. Then, the browser will send a request to that address, using the htt protocol, asking for the /some/page.html resource at 
+that ip address. 
