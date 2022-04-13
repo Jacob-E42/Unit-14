@@ -1,0 +1,8 @@
+.center{
+    text-align: center;
+}
+div{
+    margin: 20px;
+    width: auto;
+    max-height: 300px;
+}

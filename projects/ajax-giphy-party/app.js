@@ -28,39 +28,47 @@
 // Part 3: Removing GIFs
 // Add a button next to the form which, when clicked, will remove all GIFs from the page.
 const $gifPage = $('#gifPage');
-function appendGif(resp){
+function appendGif(resp) {
     let respLength = resp.data.data.length;
     let randomIndex = Math.floor(Math.random() * respLength);
-    let url = resp.data.data[randomIndex].url;
-    
-    const $newDiv = $('<div>');
-    const $newImg = $('<img>', {src: url})
-    console.log("random index -> ", randomIndex);
-    console.log('url=> ', url)
-    console.log('index -> ', resp.data.data[randomIndex])
-    console.log(resp.data.data);
+    if (randomIndex) {
+        let url = resp.data.data[randomIndex].images.original.url;
 
-    $newDiv.append($newImg);
-    $gifPage.append($newDiv);
+        const $newDiv = $('<div>', { class: "center" });
+        const $newImg = $('<img>', { src: url })
+
+        console.log('url=> ', url)
+
+        console.log(resp.data.data);
+
+        $newDiv.append($newImg);
+        $gifPage.append($newDiv);
+    }
 }
 
 $("form").on('submit', async function (e) {
     e.preventDefault();
-    
-    const $searchBox = $('#search');
+
+
     const $searchTerm = $('#search').val();
     $('#search').val('');
     const $removeButton = $('#remove-button')
-    
 
-    const response = await axios.get('http://api.giphy.com/v1/gifs/search', {params: {api_key: "UX2siRYPC0ZBLanOi28Qf82Cw5oOZTVn",
-q: $searchTerm}});
+
+    const response = await axios.get('http://api.giphy.com/v1/gifs/search', {
+        params: {
+            api_key: "UX2siRYPC0ZBLanOi28Qf82Cw5oOZTVn",
+            q: $searchTerm
+        }
+    });
 
     appendGif(response);
-    
+
 })
 
-
+$('#remove-button').on('click', function () {
+    $gifPage.empty();
+})
 
 
 
